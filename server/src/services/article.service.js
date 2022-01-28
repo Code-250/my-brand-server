@@ -19,6 +19,7 @@ class articleServices {
     const readSingleArticle = await Article.findOne({ _id });
     return readSingleArticle;
   }
+  
   // update
 
   static async updateArticle({ id: _id }, post) {
