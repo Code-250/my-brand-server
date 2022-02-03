@@ -1,22 +1,21 @@
 import Article from "../models/article";
 
 class articleServices {
-
   static async createArticle(post) {
     const createArticle = await Article.create(post);
     // if (!createArticle) return null;
     return createArticle;
   }
 
-
   static async readAllArticles() {
     const readAllArticles = await Article.find();
     return readAllArticles;
   }
 
-
   static async readSingleArticle({ id: _id }) {
-    const readSingleArticle = await Article.findOne({ _id });
+    const readSingleArticle = await Article.findOne({ _id })
+      .populate("comments")
+      .sort({ time: -1 });
     return readSingleArticle;
   }
   // update
@@ -28,7 +27,6 @@ class articleServices {
     });
     return updateArticle;
   }
-
   static async deleteArticle({ id: _id }) {
     const deleteArticle = await Article.findOneAndDelete({ _id });
     return deleteArticle;
