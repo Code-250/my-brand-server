@@ -20,7 +20,6 @@ class commentsController {
           `please provide ${errors[0].context.key} of at least ${errors[0].context.limit} character length`
         );
       const findPost = await readSingleArticle({ id: req.params.id });
-      console.log(findPost);
       if (!findPost) return Response.error(res, 400, "post does not exist");
       const commentsData = await createComment({
         name,
@@ -38,16 +37,13 @@ class commentsController {
         commentsData
       );
     } catch (error) {
-      console.log(error);
       return Response.error(res, 500, "internal server error");
     }
   }
 
   static async getAllComments(req, res) {
     try {
-      const findPosts = await readSingleArticle({ id: req.params.id })
-        .populate("comments")
-        .sort({ time: -1 });
+      const findPosts = await readSingleArticle({ id: req.params.id });
       if (!findPosts) return Response.error(res, 404, "post not found");
       return Response.success(
         res,

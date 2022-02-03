@@ -13,7 +13,9 @@ class articleServices {
   }
 
   static async readSingleArticle({ id: _id }) {
-    const readSingleArticle = await Article.findOne({ _id });
+    const readSingleArticle = await Article.findOne({ _id })
+      .populate("comments")
+      .sort({ time: -1 });
     return readSingleArticle;
   }
   // update
@@ -24,10 +26,6 @@ class articleServices {
       new: true,
     });
     return updateArticle;
-  }
-  static async findPost({ id: _id }) {
-    const foundPost = await Article.findById({ _id });
-    return foundPost;
   }
   static async deleteArticle({ id: _id }) {
     const deleteArticle = await Article.findOneAndDelete({ _id });
