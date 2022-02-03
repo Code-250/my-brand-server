@@ -1,5 +1,6 @@
 import * as userValidate from "./user";
 import * as articleValidate from "./article";
+import * as commentValidate from "./comment";
 
 function validate(schema, value) {
   const { error } = schema.validate(value);
@@ -7,4 +8,4 @@ function validate(schema, value) {
   return false;
 }
 
-export { validate, userValidate, articleValidate };
+export { validate, userValidate, articleValidate, commentValidate };

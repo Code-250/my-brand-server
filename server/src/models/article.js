@@ -7,7 +7,7 @@ const articleSchema = mongoose.Schema({
   cloudinary_id: { type: String },
   commentsCount: { type: Number, default: 0 },
   likes: { type: Number, default: 0 },
-  comments: [{ type: mongoose.Types.ObjectId, ref: "Comment" }],
+  comments: [{ type: mongoose.Types.ObjectId, ref: "comments" }],
 });
 
 export default mongoose.model("Article", articleSchema);
