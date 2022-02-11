@@ -9,7 +9,7 @@
     "coverage": "nyc npm run test",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "build": "babel ./src --out-dir build --copy-files",
-    "start": "npm run build && node ./build/index.js"
+    "start": "node ./src/index.js"
   },
   "keywords": [],
   "author": "",
